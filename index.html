@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Un lazo en 11 dimensiones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #ffd700;
+      --deep-yellow: #facc15;
+      --bg-dark: #0d0d0d;
+      --text-light: #f3f4f6;
+      --text-muted: #a3a3a3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .highlight {
+      color: var(--deep-yellow);
+      font-weight: bold;
+    }
+
+    .parallax {
+      height: 100vh;
+      background: url('obra.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .parallax h1 {
+      font-size: 4rem;
+      color: white;
+      text-shadow: 0 0 20px #000;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    .delay-3 { animation-delay: 0.9s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .string {
+      position: fixed;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--yellow);
+      opacity: 0.2;
+      animation: vibrate 1s infinite ease-in-out;
+    }
+
+    .string:nth-child(1) { left: 2%; animation-delay: 0s; }
+    .string:nth-child(2) { left: 4%; animation-delay: 0.2s; }
+    .string:nth-child(3) { left: 96%; animation-delay: 0.4s; }
+    .string:nth-child(4) { left: 98%; animation-delay: 0.6s; }
+
+    @keyframes vibrate {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      background-color: #111;
+    }
+
+    .wave-string {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100px;
+    opacity: 0.3;
+    z-index: 0;
+    animation: waveVibrate 4s ease-in-out infinite alternate;
+    }
+
+    .wave-string.left {
+      left: 0;
+      transform: translateX(-50%);
+    }
+
+    .wave-string.right {
+      right: 0;
+      transform: translateX(50%);
+    }
+
+    .wave-string.delay {
+      animation-delay: 2s;
+    }
+
+    @keyframes waveVibrate {
+    0% { transform: translateX(0) scaleY(1); opacity: 0.2; }
+    50% { transform: translateX(5px) scaleY(1.05); opacity: 0.4; }
+    100% { transform: translateX(0) scaleY(1); opacity: 0.2; }
+    }
+
+    .section-1 {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .section-2 {
+    background: rgba(255, 255, 255, 0.04);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CUERDAS LATERALES -->
+  <svg class="wave-string left" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path d="M50,0 C30,25 70,75 50,100" fill="none" stroke="#ffd700" stroke-width="2"/>
+  </svg>
+  <svg class="wave-string left delay" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path d="M60,0 C40,30 60,70 40,100" fill="none" stroke="#ffd700" stroke-width="2"/>
+  </svg>
+  <svg class="wave-string right" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path d="M50,0 C70,25 30,75 50,100" fill="none" stroke="#ffd700" stroke-width="2"/>
+  </svg>
+  <svg class="wave-string right delay" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path d="M40,0 C60,30 40,70 60,100" fill="none" stroke="#ffd700" stroke-width="2"/>
+  </svg>
+
+  <div class="parallax">
+    <h1>Un lazo en 11 dimensiones</h1>
+  </div>
+
+  <section class="section-1">
+    <h1 class="fade-in delay-1">La música secreta del universo</h1>
+    <p class="fade-in delay-2">
+      Dicen que, en el fondo de toda materia, no hay partículas, sino <span class="highlight">cuerdas diminutas</span> que vibran. 
+      No las vemos, pero están ahí: pulsando, oscilando, creando lo que llamamos realidad.
+    </p>
+    <p class="fade-in delay-3">
+      Cada vibración genera una partícula distinta, como notas en un instrumento cósmico. 
+      Para que esta sinfonía exista, el universo necesita <span class="highlight">once dimensiones</span>, la mayoría ocultas a nuestros sentidos.
+      Es un tejido invisible, en el que todo está conectado.
+    </p>
+  </section>
+
+  <section class="section-2">
+    <h1 class="fade-in delay-1">Un lazo en 11 dimensiones</h1>
+    <p class="fade-in delay-2">
+      Esta obra es un susurro visual: una <span class="highlight">presencia que camina a nuestro lado</span> aunque ya no esté en este plano.
+      Una interpretación poética de la teoría de cuerdas, donde lo esencial no se ve, pero vibra.
+    </p>
+    <p class="fade-in delay-3">
+      El personaje y la figura etérea están unidos por un lazo que atraviesa dimensiones. 
+      No es memoria, no es fantasía: es una <span class="highlight">frecuencia compartida</span>, un eco persistente que nos acompaña en el viaje.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 - Obra: "Un lazo en 11 dimensiones". Todos los derechos reservados.
+  </footer>
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
