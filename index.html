@@ -171,6 +171,19 @@
     opacity: 1;
     transform: translateY(0);
     }
+
+    .parallax {
+    height: 100vh;
+    background: url('obra.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* ¡Esto es lo que falta! */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    }
+
   </style>
 </head>
 <body>
@@ -191,6 +204,8 @@
 
   <div class="parallax">
     <h1>Un lazo en 11 dimensiones</h1>
+    <hr>
+    <h5>By Bautista Alsina</h5>
   </div>
 
   <section class="section-1">
